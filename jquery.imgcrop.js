@@ -144,11 +144,16 @@
         },
         images = this.filter('img'),
         others = this.filter(':not(img)');
-      if (images.length) {
-        images.bind('load', function() { // TODO: Sometimes doesn't fire on IE10 when loading for first time (not from cache). No workaround found yet.
-            _init.call(this);
-            this.style.display = 'inline';
-          }).each(function() {
+      images.each(function() {
+        // There is an issue on IE10 where images loading for first time (not from cache) would not fire the 'load' event.
+        // Issue is explained here http://api.jquery.com/load-event/ under Caveats.
+        // Creating a new temp img element and binding 'load' to this instead seems to fix it.
+        var target = $(this),
+          temp = $('<img>').attr('src', $(this).attr('src'));
+        temp.bind('load', function() {
+          _init.call(target);
+          target.get(0).style.display = 'inline';
+        }) /*.each(function() {
           // trick from paul irish's https://gist.github.com/797120/7176db676f1e0e20d7c23933f9fc655c2f120c58
           if (this.complete || this.complete === undefined) {
             var src = this.src;
@@ -156,8 +161,8 @@
             this.src = src;
             //this.style.display = 'none'; // Commented out on 2013-11-08 because causing issue randomly with MSIE8. Doesn't look like it's needed for other browsers either.
           }
-        });
-      }
+        });*/
+      });
       if (others.length) {
         others.each(_init);
       }
