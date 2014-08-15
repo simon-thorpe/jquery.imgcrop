@@ -151,17 +151,18 @@
         var target = $(this),
           temp = $('<img>').attr('src', $(this).attr('src'));
         temp.bind('load', function() {
-          _init.call(target);
-          target.get(0).style.display = 'inline';
-        }) /*.each(function() {
+            _init.call(target);
+            target.get(0).style.display = 'inline';
+          }).each(function() {
           // trick from paul irish's https://gist.github.com/797120/7176db676f1e0e20d7c23933f9fc655c2f120c58
+          // IE8 and maybe other browsers too.
           if (this.complete || this.complete === undefined) {
             var src = this.src;
             this.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
             this.src = src;
             //this.style.display = 'none'; // Commented out on 2013-11-08 because causing issue randomly with MSIE8. Doesn't look like it's needed for other browsers either.
           }
-        });*/
+        });
       });
       if (others.length) {
         others.each(_init);
