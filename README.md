@@ -1,5 +1,6 @@
 jquery.imgcrop
 ==============
+[View demo](https://rawgit.com/simon-thorpe/jquery.imgcrop/master/example/example.html)
 
 ### Recommended Sitecore Usage
 ```
