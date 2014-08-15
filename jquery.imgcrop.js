@@ -145,7 +145,7 @@
         images = this.filter('img'),
         others = this.filter(':not(img)');
       if (images.length) {
-        images.bind('load', function() {
+        images.bind('load', function() { // TODO: Sometimes doesn't fire on IE10 when loading for first time (not from cache). No workaround found yet.
             _init.call(this);
             this.style.display = 'inline';
           }).each(function() {
