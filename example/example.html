@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Sitecore Crop and Fill Style Images</title>
+</head>
+<body>
+	<p>
+		Get image 3x the cropped size from the server for HiDPI displays where window.devicePixelRatio is 3.
+	</p>
+	
+	<style>
+		body{margin:50px;border:2px solid #bbb;padding:20px;}
+		div{border:3px solid orange;margin:5px;background-color:purple;}
+	</style>
+	<style>/*img{display:none;}*/</style>
+	
+	<img src="portrait.jpg" data-crop-width="64" data-crop-height="64" alt="">
+	<img src="portrait.jpg" data-crop-width="128" data-crop-height="64" alt="">
+	<img src="portrait.jpg"  data-crop-width="64px" data-crop-height="128px" alt="">
+	
+	<img src="landscape.jpg" data-crop-width="64" data-crop-height="64" alt="">
+	<img src="landscape.jpg" data-crop-width="128" data-crop-height="64" alt="">
+	<img src="landscape.jpg"  data-crop-width="64px" data-crop-height="128px" alt="">
+	
+	<img src="square.jpg" data-crop-width="64" data-crop-height="64" alt="">
+	<img src="square.jpg" data-crop-width="128" data-crop-height="64" alt="">
+	<img src="square.jpg" data-crop-width="64px" data-crop-height="128px" alt="">
+	
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="../jquery.imgcrop.js"></script>
+</body>
+</html>
