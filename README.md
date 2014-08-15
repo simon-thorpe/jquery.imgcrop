@@ -2,7 +2,7 @@ jquery.imgcrop
 ==============
 
 ### Recommended Sitecore Usage
-`
+```
 <ItemTemplate>
 	<li>
 		<div class="staff">
@@ -14,5 +14,5 @@ jquery.imgcrop
 		</div>
 	</li>
 </ItemTemplate>
-`
-- CssStyle display:none in <sc:Image> and wrapper div with fixed width+height to prevent flicker of natural sized image before plugin has activated.
+```
+- CssStyle display:none in &lt;sc:Image&gt; and wrapper div with fixed width+height to prevent flicker of natural sized image before plugin has activated.
