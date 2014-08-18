@@ -101,7 +101,9 @@
           center: true,
           fill: true,
           initClass: 'imgcrop-init',
-          doneEvent: 'imgcropdone'
+          doneEvent: 'imgcropdone',
+          offsetTop: 0,
+          offsetLeft: 0
         }, options),
         _init = function() {
           var img = $(this),
@@ -133,13 +135,13 @@
           var imgWidth = img.width();
           var imgHeight = img.height();
           if (imgWidth > wrapperWidth) img.css({
-              left: '-' + (imgWidth - wrapperWidth) / 2 + 'px'
+              left: '-' + (((imgWidth - wrapperWidth) / 2) + settings.offsetLeft) + 'px'
             });
           else img.css({
               left: 0
             });
           if (imgHeight > wrapperHeight) img.css({
-              top: '-' + (imgHeight - wrapperHeight) / 2 + 'px'
+              top: '-' + (((imgHeight - wrapperHeight) / 2) + settings.offsetTop) + 'px'
             });
         },
         images = this.filter('img'),
