@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Sitecore Crop and Fill Style Images</title>
+</head>
+<body>
+	<p>
+		Get image 3x the cropped size from the server for HiDPI displays where window.devicePixelRatio is 3.
+	</p>
+	
+	<style>
+		body{margin:50px;border:2px solid #bbb;padding:20px;}
+		div{border:3px solid orange;margin:5px;background-color:purple;}
+	</style>
+	<style>/*img{display:none;}*/</style>
+	
+	<img src="portrait.jpg" class="square" alt="">
+	<img src="portrait.jpg" class="landscape" alt="">
+	<img src="portrait.jpg" class="portrait" alt="">
+	
+	<img src="landscape.jpg" class="square" alt="">
+	<img src="landscape.jpg" class="landscape" alt="">
+	<img src="landscape.jpg" class="portrait" alt="">
+	
+	<img src="square.jpg" class="square" alt="">
+	<img src="square.jpg" class="landscape" alt="">
+	<img src="square.jpg" class="portrait" alt="">
+	
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="../jquery.imgcrop.js"></script>
+	
+	<script>
+		$(function(){
+			$('img.square').wrap($('<div/>')).imgcrop({
+				wrapperWidth: 64,
+				wrapperHeight: 64
+			});
+			$('img.landscape').wrap($('<div/>')).imgcrop({
+				wrapperWidth: 128,
+				wrapperHeight: 64
+			});
+			$('img.portrait').wrap($('<div/>')).imgcrop({
+				wrapperWidth: 64,
+				wrapperHeight: 128
+			});
+		});
+	</script>
+</body>
+</html>
