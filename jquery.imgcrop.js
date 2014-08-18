@@ -208,8 +208,8 @@
       $(this).imgcrop({
         wrapperWidth: w,
         wrapperHeight: h,
-        offsetTop: parseInt($(this).attr('data-offset-top')) || 0,
-        offsetLeft: parseInt($(this).attr('data-offset-left')) || 0,
+        offsetTop: parseInt(wrapper.attr('data-offset-top')) || 0,
+        offsetLeft: parseInt(wrapper.attr('data-offset-left')) || 0,
       });
     });
   };
