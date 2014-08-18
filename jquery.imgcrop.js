@@ -191,7 +191,9 @@
       $(this).removeAttr('data-crop-height');
       $(this).wrap(wrapper).imgcrop({
         wrapperWidth: w,
-        wrapperHeight: h
+        wrapperHeight: h,
+        offsetTop: parseInt($(this).attr('data-offset-top')) || 0,
+        offsetLeft: parseInt($(this).attr('data-offset-left')) || 0,
       });
     });
     $('[data-crop-width]>img').each(function() { // On custom wrapper for img element.
@@ -205,7 +207,9 @@
       wrapper.removeAttr('data-crop-height');
       $(this).imgcrop({
         wrapperWidth: w,
-        wrapperHeight: h
+        wrapperHeight: h,
+        offsetTop: parseInt($(this).attr('data-offset-top')) || 0,
+        offsetLeft: parseInt($(this).attr('data-offset-left')) || 0,
       });
     });
   };
