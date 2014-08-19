@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Sitecore Crop and Fill Style Images</title>
+</head>
+<body>
+	<p>
+		Get image 3x the cropped size from the server for HiDPI displays where window.devicePixelRatio is 3.
+	</p>
+	
+	<style>
+		body{margin:50px;border:2px solid #bbb;padding:20px;}
+		div{border:3px solid orange;margin:5px;background-color:purple;}
+	</style>
+	<style>/*img{display:none;}*/</style>
+	
+	<div data-crop-width="64" data-crop-height="64" data-center=false><img src="portrait-large.jpg" alt=""></div>
+	<div data-crop-width="128" data-crop-height="64"><img src="portrait-large.jpg" alt=""></div>
+	<div data-crop-width="64" data-crop-height="128px"><img src="portrait-large.jpg" alt=""></div>
+	
+	<div data-crop-width="64" data-crop-height="64"><img src="landscape-large.jpg" alt=""></div>
+	<div data-crop-width="128" data-crop-height="64"><img src="landscape-large.jpg" alt=""></div>
+	<div data-crop-width="64px" data-crop-height="128px"><img src="landscape-large.jpg" alt=""></div>
+	
+	<div data-crop-width="64" data-crop-height="64"><img src="square-large.jpg" alt=""></div>
+	<div data-crop-width="128" data-crop-height="64"><img src="square-large.jpg" alt=""></div>
+	<div data-crop-width="64px" data-crop-height="128px"><img src="square-large.jpg" alt=""></div>
+	
+	<div data-crop-width="64" data-crop-height="64"><img src="portrait-small.jpg" alt=""></div>
+	<div data-crop-width="128" data-crop-height="64"><img src="portrait-small.jpg" alt=""></div>
+	<div data-crop-width="64px" data-crop-height="128px"><img src="portrait-small.jpg" alt=""></div>
+	
+	<div data-crop-width="64" data-crop-height="64"><img src="landscape-small.jpg" alt=""></div>
+	<div data-crop-width="128" data-crop-height="64"><img src="landscape-small.jpg" alt=""></div>
+	<div data-crop-width="64px" data-crop-height="128px"><img src="landscape-small.jpg" alt=""></div>
+	
+	<div data-crop-width="64" data-crop-height="64"><img src="square-small.jpg" alt=""></div>
+	<div data-crop-width="128" data-crop-height="64"><img src="square-small.jpg" alt=""></div>
+	<div data-crop-width="64px" data-crop-height="128px"><img src="square-small.jpg" alt=""></div>
+	
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="../jquery.imgcrop.js"></script>
+</body>
+</html>

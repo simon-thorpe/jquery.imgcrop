@@ -5,22 +5,22 @@
 (function($) {
   var methods = {
     ratio: function(args) {
-      var item = args.item,
+      var img = args.img,
         settings = args.settings;
       return {
-        w: item.width() / settings.wrapperWidth,
-        h: item.height() / settings.wrapperHeight
+        w: img.width() / settings.wrapperWidth,
+        h: img.height() / settings.wrapperHeight
       };
     },
     center: function(long, short) {
       return parseInt((long - short) / 2, 10);
     },
     scaleToFill: function(args) {
-      var item = args.item,
+      var img = args.img,
         settings = args.settings,
         ratio = settings.ratio,
-        width = item.width(),
-        height = item.height(),
+        width = img.width(),
+        height = img.height(),
         offset = {
           top: 0,
           left: 0
@@ -42,22 +42,27 @@
 
       if (settings.center) {
         args.wrapper.css('position', 'relative');
-        item.css({
+        img.css({
           'position': 'absolute',
           'top': ['-', offset.top, 'px'].join(''),
           'left': offset.left + 'px'
         });
+      } else {
+        img.css({
+          marginTop: settings.offsetTop * -1,
+          marginLeft: settings.offsetLeft * -1
+        });
       }
 
-      return item.height(height).attr('height', height + 'px')
+      return img.height(height).attr('height', height + 'px')
       .width(width).attr('width', width + 'px');
     },
     scaleToFit: function(args) {
-      var item = args.item,
+      var img = args.img,
         settings = args.settings,
         ratio = settings.ratio,
-        width = item.width(),
-        height = item.height(),
+        width = img.width(),
+        height = img.height(),
         offset = {
           top: 0,
           left: 0
@@ -65,12 +70,12 @@
 
       if (ratio.h > ratio.w) {
         height = settings.wrapperHeight,
-        width = parseInt((item.width() * settings.wrapperHeight) / item.height(), 10);
+        width = parseInt((img.width() * settings.wrapperHeight) / img.height(), 10);
         if (settings.center) {
           offset.left = methods.center(height, width);
         }
       } else {
-        height = parseInt((item.height() * settings.wrapperWidth) / item.width(), 10),
+        height = parseInt((img.height() * settings.wrapperWidth) / img.width(), 10),
         width = settings.wrapperWidth;
         if (settings.center) {
           offset.top = methods.center(width, height);
@@ -84,13 +89,13 @@
 
       if (settings.center) {
         args.wrapper.css('position', 'relative');
-        item.css({
+        img.css({
           'position': 'absolute',
           'top': offset.top + 'px',
           'left': offset.left + 'px'
         });
       }
-      return item.height(height).attr('height', height + 'px')
+      return img.height(height).attr('height', height + 'px')
       .width(width).attr('width', width + 'px');
     },
     init: function(options) {
@@ -109,7 +114,7 @@
           var img = $(this),
             wrapper = settings.wrapperSelector ? img.closest(settings.wrapperSelector) : img.parent(),
             args = {
-              item: img,
+              img: img,
               settings: settings,
               wrapper: wrapper
             };
@@ -194,6 +199,7 @@
         wrapperHeight: h,
         offsetTop: parseInt($(this).attr('data-offset-top')) || 0,
         offsetLeft: parseInt($(this).attr('data-offset-left')) || 0,
+        center: typeof($(this).attr('data-center')) === 'undefined' ? true : $(this).data('center'),
       });
     });
     $('[data-crop-width]>img').each(function() { // On custom wrapper for img element.
@@ -210,6 +216,7 @@
         wrapperHeight: h,
         offsetTop: parseInt(wrapper.attr('data-offset-top')) || 0,
         offsetLeft: parseInt(wrapper.attr('data-offset-left')) || 0,
+        center: typeof(wrapper.attr('data-center')) === 'undefined' ? true : wrapper.data('center'),
       });
     });
   };
